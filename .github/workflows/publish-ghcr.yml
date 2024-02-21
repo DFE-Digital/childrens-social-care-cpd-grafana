@@ -16,6 +16,8 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
     - name: Checkout code
@@ -23,6 +25,7 @@ jobs:
 
     - name: Download Grafana Plugin
       run: |
+        ls
         mkdir -p latest-cost-plugin
         cd latest-cost-plugin
         wget "https://github.com/DFE-Digital/Grafana.Plugin.CostManagement/releases/download/main/dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip"
@@ -30,7 +33,7 @@ jobs:
         ls
         unzip -o dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip
         unzip -o blackcowmoo-googleanalytics-datasource-0.2.3.zip
-        cp /home/runner/work/Grafana.Plugin.CostManagement/Grafana.Plugin.CostManagement/grafana-files/grafana.ini .
+        cp /home/runner/work/childrens-social-care-cpd-grafana/childrens-social-care-cpd-grafana/grafana-files/grafana.ini .
         cd ..
 
     # Login against a Docker registry except on PR
@@ -45,8 +48,8 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build . -t ghcr.io/dfe-digital/grafana-azurecostplugin-grafana:${{ env.PLUGIN_VERSION }}
-        docker push ghcr.io/dfe-digital/grafana-azurecostplugin-grafana:${{ env.PLUGIN_VERSION }}
+        docker build . -t ghcr.io/dfe-digital/childrens-social-care-cpd-grafana:${{ env.PLUGIN_VERSION }}
+        docker push ghcr.io/dfe-digital/childrens-social-care-cpd-grafana:${{ env.PLUGIN_VERSION }}
 
     env:
       DOCKER_BUILDKIT: 1
