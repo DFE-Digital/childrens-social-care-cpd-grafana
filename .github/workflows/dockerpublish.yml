@@ -88,7 +88,7 @@ jobs:
           cd /home/runner/work/Grafana.Plugin.CostManagement/Grafana.Plugin.CostManagement/latest-cost-plugin
           unzip -o dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip
           unzip -o blackcowmoo-googleanalytics-datasource-0.2.3.zip
-          cp /home/runner/work/Grafana.Plugin.CostManagement/Grafana.Plugin.CostManagement/grafana-files/grafana.ini .
+          cp /home/runner/work/childrens-social-care-cpd-grafana/childrens-social-care-cpd-grafana/grafana-files/grafana.ini .
           cd /home/runner/work/Grafana.Plugin.CostManagement/Grafana.Plugin.CostManagement/latest-cost-plugin/dfe-azurecostbackend-datasource
           pwd
           ls
@@ -103,7 +103,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/dfe-digital/grafana.plugin.costmanagement:${{ env.PLUGIN_VERSION }}
+          tags: ghcr.io/dfe-digital/childrens-social-care-cpd-grafana:${{ env.PLUGIN_VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             VCSREF=${{ env.sha_short }}
