@@ -25,7 +25,7 @@ jobs:
       run: |
         mkdir -p latest-cost-plugin
         cd latest-cost-plugin
-        wget "https://github.com/DFE-Digital/Grafana.Plugin.CostManagement/releases/download/main/dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip"
+        wget --max-redirect=0 "https://github.com/DFE-Digital/Grafana.Plugin.CostManagement/releases/download/main/dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip"
         wget "https://grafana.com/api/plugins/blackcowmoo-googleanalytics-datasource/versions/0.2.3/download" -O blackcowmoo-googleanalytics-datasource-0.2.3.zip
         ls
         unzip -o dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip
