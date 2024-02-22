@@ -11,7 +11,9 @@ COPY latest-cost-plugin/grafana.ini /etc/grafana/grafana.ini
 # Copy your plugin files into the Grafana plugins directory
 COPY latest-cost-plugin/dfe-azurecostbackend-datasource /var/lib/grafana/plugins/dfe-azurecostbackend-datasource
 COPY latest-cost-plugin/blackcowmoo-googleanalytics-datasource /var/lib/grafana/plugins/blackcowmoo-googleanalytics-datasource
+COPY latest-cost-plugin/netsage-sankey-panel /var/lib/grafana/plugins/netsage-sankey-panel
 
 # Set permissions for the plugin directory
 RUN chown -R 472:472 /var/lib/grafana/plugins/dfe-azurecostbackend-datasource
 RUN chown -R 472:472 /var/lib/grafana/plugins/blackcowmoo-googleanalytics-datasource
+RUN chown -R 472:472 /var/lib/grafana/plugins/netsage-sankey-panel

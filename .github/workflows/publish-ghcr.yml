@@ -11,7 +11,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   RELEASE_TAG: ${{ github.event.release.tag_name }}
-  PLUGIN_VERSION: 1.0.11
+  PLUGIN_VERSION: 1.0.12
 
 jobs:
   build-and-push:
@@ -30,9 +30,11 @@ jobs:
         cd latest-cost-plugin
         wget "https://github.com/DFE-Digital/Grafana.Plugin.CostManagement/releases/download/main/dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip"
         wget "https://grafana.com/api/plugins/blackcowmoo-googleanalytics-datasource/versions/0.2.3/download" -O blackcowmoo-googleanalytics-datasource-0.2.3.zip
+        wget "https://grafana.com/api/plugins/netsage-sankey-panel/versions/1.1.1/download" -O netsage-sankey-panel-1.1.1.zip
         ls
         unzip -o dfe-azurecostbackend-datasource-${{ env.PLUGIN_VERSION }}.zip
         unzip -o blackcowmoo-googleanalytics-datasource-0.2.3.zip
+        unzip -o netsage-sankey-panel-1.1.1.zip
         cp /home/runner/work/childrens-social-care-cpd-grafana/childrens-social-care-cpd-grafana/grafana-files/grafana.ini .
         cd ..
 
